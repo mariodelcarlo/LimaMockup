@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "LimaDocumentTableViewCell.h"
 #import "LimaDocument.h"
+#import "DetailImageViewController.h"
 
 NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 
@@ -16,6 +17,7 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSArray *limaDocuments;
+@property (nonatomic, strong) NSIndexPath * selectedRowIndexPath;
 @end
 
 @implementation HomeViewController
@@ -31,11 +33,23 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    self.selectedRowIndexPath = nil;
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor lightGrayColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshDocuments) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"showDetailImage"]) {
+        if (self.selectedRowIndexPath != nil){
+            LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
+            DetailImageViewController * destViewConroller = [segue destinationViewController];
+            destViewConroller.imagePath = document.filePath;
+            destViewConroller.imageName = document.fileName;
+        }
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -64,6 +78,21 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
     }
     
     return cell;
+}
+
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedRowIndexPath = indexPath;
+    LimaDocument *document = self.limaDocuments[indexPath.row];
+    switch (document.mimeType) {
+        case MimeTypeImage:
+            [self performSegueWithIdentifier:@"showDetailImage" sender:self];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark private methods

@@ -13,6 +13,7 @@
 		CF88A2551B7E119900A90A62 /* MimeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2521B7E119900A90A62 /* MimeImage.png */; };
 		CF88A2561B7E119900A90A62 /* MimeVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2531B7E119900A90A62 /* MimeVideo.png */; };
 		CF88A2581B7E130E00A90A62 /* MimeText.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2571B7E130E00A90A62 /* MimeText.png */; };
+		CF88A25C1B7E229B00A90A62 /* DetailImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF88A25B1B7E229B00A90A62 /* DetailImageViewController.m */; };
 		CFE6FEED1B7D2F5700991A8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6FEEC1B7D2F5700991A8C /* main.m */; };
 		CFE6FEF01B7D2F5800991A8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6FEEF1B7D2F5800991A8C /* AppDelegate.m */; };
 		CFE6FEF61B7D2F5800991A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE6FEF41B7D2F5800991A8C /* Main.storyboard */; };
@@ -41,6 +42,8 @@
 		CF88A2521B7E119900A90A62 /* MimeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeImage.png; sourceTree = "<group>"; };
 		CF88A2531B7E119900A90A62 /* MimeVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeVideo.png; sourceTree = "<group>"; };
 		CF88A2571B7E130E00A90A62 /* MimeText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeText.png; sourceTree = "<group>"; };
+		CF88A25A1B7E229B00A90A62 /* DetailImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailImageViewController.h; sourceTree = "<group>"; };
+		CF88A25B1B7E229B00A90A62 /* DetailImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailImageViewController.m; sourceTree = "<group>"; };
 		CFE6FEE71B7D2F5700991A8C /* LimaMockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimaMockup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE6FEEB1B7D2F5700991A8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFE6FEEC1B7D2F5700991A8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +96,17 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		CF88A2591B7E222600A90A62 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF44A9A41B7D322D00963529 /* HomeViewController.h */,
+				CF44A9A51B7D322D00963529 /* HomeViewController.m */,
+				CF88A25A1B7E229B00A90A62 /* DetailImageViewController.h */,
+				CF88A25B1B7E229B00A90A62 /* DetailImageViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		CFE6FEDE1B7D2F5700991A8C = {
 			isa = PBXGroup;
 			children = (
@@ -114,11 +128,10 @@
 		CFE6FEE91B7D2F5700991A8C /* LimaMockup */ = {
 			isa = PBXGroup;
 			children = (
+				CF88A2591B7E222600A90A62 /* ViewControllers */,
 				CF88A24F1B7E119900A90A62 /* Ressources */,
 				CFE6FEEE1B7D2F5700991A8C /* AppDelegate.h */,
 				CFE6FEEF1B7D2F5800991A8C /* AppDelegate.m */,
-				CF44A9A41B7D322D00963529 /* HomeViewController.h */,
-				CF44A9A51B7D322D00963529 /* HomeViewController.m */,
 				CFE6FEF71B7D2F5800991A8C /* Images.xcassets */,
 				CFE6FEF91B7D2F5800991A8C /* LaunchScreen.xib */,
 				CFE6FF101B7D2FC000991A8C /* LimaDocument.h */,
@@ -266,6 +279,7 @@
 				CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */,
 				CF44A9A61B7D322D00963529 /* HomeViewController.m in Sources */,
 				CFE6FF121B7D2FC000991A8C /* LimaDocument.m in Sources */,
+				CF88A25C1B7E229B00A90A62 /* DetailImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
