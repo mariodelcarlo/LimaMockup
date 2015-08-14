@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-
+@property(nonatomic,assign)NSString *directoyPath;
 @end

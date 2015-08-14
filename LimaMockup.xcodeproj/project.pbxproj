@@ -17,6 +17,7 @@
 		CF88A2601B7E2D9200A90A62 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CF88A25F1B7E2D9200A90A62 /* HttpHelper.m */; };
 		CF88A2661B7E3AEF00A90A62 /* DetailSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF88A2651B7E3AEF00A90A62 /* DetailSoundViewController.m */; };
 		CF88A2681B7E3B9200A90A62 /* MimeSound.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2671B7E3B9200A90A62 /* MimeSound.png */; };
+		CF88A26B1B7E3C9F00A90A62 /* DetailDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF88A26A1B7E3C9F00A90A62 /* DetailDirectoryViewController.m */; };
 		CFE6FEED1B7D2F5700991A8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6FEEC1B7D2F5700991A8C /* main.m */; };
 		CFE6FEF01B7D2F5800991A8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6FEEF1B7D2F5800991A8C /* AppDelegate.m */; };
 		CFE6FEF61B7D2F5800991A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE6FEF41B7D2F5800991A8C /* Main.storyboard */; };
@@ -53,6 +54,8 @@
 		CF88A2641B7E3AEF00A90A62 /* DetailSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSoundViewController.h; sourceTree = "<group>"; };
 		CF88A2651B7E3AEF00A90A62 /* DetailSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSoundViewController.m; sourceTree = "<group>"; };
 		CF88A2671B7E3B9200A90A62 /* MimeSound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeSound.png; sourceTree = "<group>"; };
+		CF88A2691B7E3C9F00A90A62 /* DetailDirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailDirectoryViewController.h; sourceTree = "<group>"; };
+		CF88A26A1B7E3C9F00A90A62 /* DetailDirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailDirectoryViewController.m; sourceTree = "<group>"; };
 		CFE6FEE71B7D2F5700991A8C /* LimaMockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimaMockup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE6FEEB1B7D2F5700991A8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFE6FEEC1B7D2F5700991A8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				CF88A25B1B7E229B00A90A62 /* DetailImageViewController.m */,
 				CF88A2641B7E3AEF00A90A62 /* DetailSoundViewController.h */,
 				CF88A2651B7E3AEF00A90A62 /* DetailSoundViewController.m */,
+				CF88A2691B7E3C9F00A90A62 /* DetailDirectoryViewController.h */,
+				CF88A26A1B7E3C9F00A90A62 /* DetailDirectoryViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				CFE6FF121B7D2FC000991A8C /* LimaDocument.m in Sources */,
 				CF88A2601B7E2D9200A90A62 /* HttpHelper.m in Sources */,
 				CF88A25C1B7E229B00A90A62 /* DetailImageViewController.m in Sources */,
+				CF88A26B1B7E3C9F00A90A62 /* DetailDirectoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

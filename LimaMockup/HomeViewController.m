@@ -33,7 +33,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self loadDocuments];
+    [self loadDocumentsForDirectory:self.directoyPath];
     self.selectedRowIndexPath = nil;
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor lightGrayColor];
@@ -90,7 +90,15 @@
         case MimeTypeImage:
             [self performSegueWithIdentifier:@"showDetailImage" sender:self];
             break;
-            
+        
+        case MimeTypeDirectory:{
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            HomeViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"Home"];
+            dest.directoyPath = document.filePath;
+            [self.navigationController pushViewController:dest animated:YES];
+        }
+            break;
+        
         default:
             break;
     }
@@ -100,14 +108,22 @@
 #pragma mark private methods
 - (void)refreshDocuments {
     //TODO: refresh your data
-    [self loadDocuments];
+    [self loadDocumentsForDirectory:self.directoyPath];
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
 
-- (void)loadDocuments{
+- (void)loadDocumentsForDirectory:(NSString*)thePath{
     __weak HomeViewController *weakSelf = self;
-    NSURL * url = [NSURL URLWithString:LIMA_API_URL];
+    NSURL * url = nil;
+    if(!thePath || [thePath isEqualToString:@""]){
+        url = [NSURL URLWithString:LIMA_API_URL];
+    }
+    else{
+        NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,thePath];
+        url = [NSURL URLWithString:request];
+    }
+    
     [HttpHelper fetchJSONForURL:url completion:^(id data, NSError *error) {
         if(error){
             [HttpHelper handleError:error];
@@ -131,7 +147,14 @@
 
 - (void)getFileInfoForFileName:(NSString*)theFileName{
     __weak HomeViewController *weakSelf = self;
-    NSString *request = [NSString stringWithFormat:@"%@/%@?stat",LIMA_API_URL,theFileName];
+    NSString *request = nil;
+    if(!self.directoyPath || [self.directoyPath isEqualToString:@""]){
+        request = [NSString stringWithFormat:@"%@/%@?stat",LIMA_API_URL,theFileName];
+    }
+    else{
+        request = [NSString stringWithFormat:@"%@%@/%@?stat",LIMA_API_URL,self.directoyPath,theFileName];
+    }
+    NSLog(@"%@",request);
     NSURL * url = [NSURL URLWithString:request];
     
 

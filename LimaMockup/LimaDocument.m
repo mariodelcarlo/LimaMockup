@@ -41,7 +41,7 @@
             break;
             
         default:
-            return [UIImage imageNamed:@"MimeDirectory.png"];
+            return nil;
             break;
     }
 }
@@ -60,6 +60,9 @@
     }
     else if([theMimeString hasPrefix:@"text"]){
         return MimeTypeText;
+    }
+    else if([theMimeString hasPrefix:@"audio"]){
+        return MimeTypeSound;
     }
     return MimeTypeUnknown;
 }
