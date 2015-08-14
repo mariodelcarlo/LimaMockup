@@ -31,6 +31,10 @@
         case MimeTypeImage:
             return [UIImage imageNamed:@"MimeImage.png"];
             break;
+        
+        case MimeTypeDirectory:
+            return [UIImage imageNamed:@"MimeDirectory.png"];
+            break;
             
         default:
             return [UIImage imageNamed:@"MimeDirectory.png"];

@@ -14,6 +14,7 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 
 @interface HomeViewController()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSArray *limaDocuments;
 @end
 
@@ -30,6 +31,11 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor lightGrayColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshDocuments) forControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark UITableViewDataSource
@@ -41,7 +47,6 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.limaDocuments.count;
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,6 +67,13 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 }
 
 #pragma mark private methods
+- (void)refreshDocuments {
+    //TODO: refresh your data
+    [self loadDocuments];
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+}
+
 - (void)loadDocuments{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -150,20 +162,6 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
                             [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:docIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                         });
                     }
-                    
-                    /*NSPredicate *applePred = [NSPredicate predicateWithFormat:@"fileName == %@",theFileName];
-                    NSArray *limaDocument = [self.limaDocuments filteredArrayUsingPredicate:applePred];
-                    if (limaDocument.count == 1){
-                        LimaDocument *doc = limaDocument[0];
-                        doc.mimeType = mime;
-                        NSLog(@"path=%@ %@",path,mime);
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            [self.tableView reloadData];
-                        });
-                    }*/
-                    
                 }
                 else{
                     [self handleWBErrorWithError:jsonError];
