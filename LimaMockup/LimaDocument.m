@@ -35,6 +35,10 @@
         case MimeTypeDirectory:
             return [UIImage imageNamed:@"MimeDirectory.png"];
             break;
+        
+        case MimeTypeSound:
+            return [UIImage imageNamed:@"MimeSound.png"];
+            break;
             
         default:
             return [UIImage imageNamed:@"MimeDirectory.png"];

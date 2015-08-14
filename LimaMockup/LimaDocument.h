@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, MimeType) {
     MimeTypeVideo = 1,
     MimeTypeImage = 2,
     MimeTypeText = 3,
+    MimeTypeSound = 4,
     MimeTypeUnknown = NSUIntegerMax
 };
 
