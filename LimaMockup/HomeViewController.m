@@ -27,13 +27,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self loadDocuments];
     self.title = @"Your documents";
 }
 
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self loadDocuments];
     self.selectedRowIndexPath = nil;
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor lightGrayColor];
@@ -94,6 +94,7 @@
         default:
             break;
     }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark private methods
@@ -121,7 +122,6 @@
             }
             weakSelf.limaDocuments = documentsFound;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 [weakSelf.tableView reloadData];
             });
         }
@@ -157,7 +157,6 @@
                 document.filePath = path;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                     [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:docIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                 });
             }
