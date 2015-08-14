@@ -15,7 +15,6 @@
 		CF88A2581B7E130E00A90A62 /* MimeText.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2571B7E130E00A90A62 /* MimeText.png */; };
 		CFE6FEED1B7D2F5700991A8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6FEEC1B7D2F5700991A8C /* main.m */; };
 		CFE6FEF01B7D2F5800991A8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6FEEF1B7D2F5800991A8C /* AppDelegate.m */; };
-		CFE6FEF31B7D2F5800991A8C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6FEF21B7D2F5800991A8C /* ViewController.m */; };
 		CFE6FEF61B7D2F5800991A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE6FEF41B7D2F5800991A8C /* Main.storyboard */; };
 		CFE6FEF81B7D2F5800991A8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE6FEF71B7D2F5800991A8C /* Images.xcassets */; };
 		CFE6FEFB1B7D2F5800991A8C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE6FEF91B7D2F5800991A8C /* LaunchScreen.xib */; };
@@ -47,8 +46,6 @@
 		CFE6FEEC1B7D2F5700991A8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFE6FEEE1B7D2F5700991A8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CFE6FEEF1B7D2F5800991A8C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CFE6FEF11B7D2F5800991A8C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CFE6FEF21B7D2F5800991A8C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CFE6FEF51B7D2F5800991A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFE6FEF71B7D2F5800991A8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CFE6FEFA1B7D2F5800991A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -130,8 +127,6 @@
 				CF44A9A81B7D3E4100963529 /* LimaDocumentTableViewCell.m */,
 				CFE6FEF41B7D2F5800991A8C /* Main.storyboard */,
 				CFE6FEEA1B7D2F5700991A8C /* Supporting Files */,
-				CFE6FEF11B7D2F5800991A8C /* ViewController.h */,
-				CFE6FEF21B7D2F5800991A8C /* ViewController.m */,
 			);
 			path = LimaMockup;
 			sourceTree = "<group>";
@@ -266,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFE6FEF31B7D2F5800991A8C /* ViewController.m in Sources */,
 				CFE6FEF01B7D2F5800991A8C /* AppDelegate.m in Sources */,
 				CFE6FEED1B7D2F5700991A8C /* main.m in Sources */,
 				CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */,
