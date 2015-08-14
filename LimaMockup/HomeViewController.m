@@ -10,8 +10,9 @@
 #import "LimaDocumentTableViewCell.h"
 #import "LimaDocument.h"
 #import "DetailImageViewController.h"
+#import "HttpHelper.h"
+#import "Constants.h"
 
-NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 
 @interface HomeViewController()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -104,115 +105,65 @@ NSString * LIMA_URL_STR = @"http://ioschallenge.api.meetlima.com";
 }
 
 - (void)loadDocuments{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
     __weak HomeViewController *weakSelf = self;
-    NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession * session = [NSURLSession sessionWithConfiguration:config];
-    NSURL * url = [NSURL URLWithString:LIMA_URL_STR];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if(!error){
-            NSHTTPURLResponse * urlResponse = (NSHTTPURLResponse*)response;
-            if (urlResponse.statusCode == 200) {
-                NSError *jsonError = nil;
-                
-                NSArray *documentsArray = [NSJSONSerialization JSONObjectWithData:data
-                                                                           options:NSJSONReadingAllowFragments
-                                                                             error:&jsonError];
-                if(!jsonError){
-                    NSMutableArray * documentsFound  = [[NSMutableArray alloc] init];
-                    for (NSString * fileName in documentsArray){
-                        LimaDocument * newDoc = [[LimaDocument alloc] initWithFileName:fileName];
-                        [documentsFound addObject:newDoc];
-                        [weakSelf getFileInfoForFileName:fileName];
-                    }
-                    weakSelf.limaDocuments = documentsFound;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                        [weakSelf.tableView reloadData];
-                    });
-                }
-                else{
-                    [self handleWBErrorWithError:jsonError];
-                }
-            }
-            else{
-                NSError *statusError = [NSError errorWithDomain:@"Status Error" code:144 userInfo:nil];
-                [self handleWBErrorWithError:statusError];
-            }
+    NSURL * url = [NSURL URLWithString:LIMA_API_URL];
+    [HttpHelper fetchJSONForURL:url completion:^(id data, NSError *error) {
+        if(error){
+            [HttpHelper handleError:error];
         }
         else{
-            [self handleWBErrorWithError:error];
+            NSArray * dataArray = (NSArray*) data;
+            NSMutableArray * documentsFound  = [[NSMutableArray alloc] init];
+            for (NSString * fileName in dataArray){
+                LimaDocument * newDoc = [[LimaDocument alloc] initWithFileName:fileName];
+                [documentsFound addObject:newDoc];
+                [weakSelf getFileInfoForFileName:fileName];
+            }
+            weakSelf.limaDocuments = documentsFound;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                [weakSelf.tableView reloadData];
+            });
         }
     }];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [task resume];
 }
 
 
 - (void)getFileInfoForFileName:(NSString*)theFileName{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak HomeViewController *weakSelf = self;
-    
-    NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession * session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSString *request = [NSString stringWithFormat:@"%@/%@?stat",LIMA_URL_STR,theFileName];
+    NSString *request = [NSString stringWithFormat:@"%@/%@?stat",LIMA_API_URL,theFileName];
     NSURL * url = [NSURL URLWithString:request];
     
-    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if(!error){
-            NSHTTPURLResponse * urlResponse = (NSHTTPURLResponse*)response;
-            if (urlResponse.statusCode == 200) {
-                NSError *jsonError = nil;
-                
-                NSDictionary *documentsDictionnary = [NSJSONSerialization JSONObjectWithData:data
-                                                                          options:NSJSONReadingAllowFragments
-                                                                            error:&jsonError];
-                if(!jsonError){
-                    NSString *mime = [documentsDictionnary objectForKey:@"mimetype"];
-                    NSString *path = [documentsDictionnary objectForKey:@"path"];
-                    NSUInteger docIndex = [weakSelf.limaDocuments indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-                        if ([[(LimaDocument *)obj fileName] isEqualToString:theFileName]) {
-                            *stop = YES;
-                            return YES;
-                        }
-                        return NO;
-                    }];
-                    
-                    if (docIndex != NSNotFound) {
-                        LimaDocument *document = weakSelf.limaDocuments[docIndex];
-                        document.mimeType = [LimaDocument mimeTypeForMimeString:mime];
-                        document.filePath = path;
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:docIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-                        });
-                    }
-                }
-                else{
-                    [self handleWBErrorWithError:jsonError];
-                }
-            }
-            else{
-                NSError *statusError = [NSError errorWithDomain:@"Status Error" code:144 userInfo:nil];
-                [self handleWBErrorWithError:statusError];
-            }
+
+    [HttpHelper fetchJSONForURL:url completion:^(id data, NSError *error) {
+        if(error){
+            [HttpHelper handleError:error];
         }
         else{
-            [self handleWBErrorWithError:error];
+            NSDictionary * dataDictionnary = (NSDictionary*) data;
+            NSString *mime = [dataDictionnary objectForKey:@"mimetype"];
+            NSString *path = [dataDictionnary objectForKey:@"path"];
+            NSUInteger docIndex = [weakSelf.limaDocuments indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                if ([[(LimaDocument *)obj fileName] isEqualToString:theFileName]) {
+                    *stop = YES;
+                    return YES;
+                }
+                return NO;
+            }];
+            
+            if (docIndex != NSNotFound) {
+                LimaDocument *document = weakSelf.limaDocuments[docIndex];
+                document.mimeType = [LimaDocument mimeTypeForMimeString:mime];
+                document.filePath = path;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                    [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:docIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                });
+            }
         }
     }];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [task resume];
-
-}
-
-- (void) handleWBErrorWithError:(NSError*)theError{
     
-    NSLog(@"WB error:%@",theError);
 }
 
 @end
