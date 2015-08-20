@@ -12,6 +12,7 @@
 
 @interface DetailSoundViewController()
 @property (nonatomic, strong) MPMoviePlayerController * player;
+@property (nonatomic, strong) UIActivityIndicatorView * activity;
 @end
 
 @implementation DetailSoundViewController
@@ -24,12 +25,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.player play];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(movieLoadStateDidChange:)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:self.player];
+    [self.activity startAnimating];
 }
 
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.player stop];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewWillDisappear:animated];
 }
 
@@ -40,6 +46,7 @@
     NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:escapedRequest];
     
+
     //Force even if silent swith is on
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     
@@ -51,9 +58,28 @@
     [self.player view].backgroundColor = [UIColor whiteColor];
     self.player.scalingMode = MPMovieScalingModeNone;
     self.player.controlStyle = MPMovieControlStyleDefault;
+    [self.player setFullscreen:YES animated:NO];
     self.player.backgroundView.backgroundColor = [UIColor whiteColor];
     self.player.repeatMode = MPMovieRepeatModeNone;
+    self.player.shouldAutoplay = NO;
     [self.view addSubview: [self.player view]];
+    
+    //Add an activity indicator while the media is loading
+    self.activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activity.center = self.view.center;
+    [self.view addSubview:self.activity];
 }
 
+#pragma mark MPMoviePlayerLoadStateDidChangeNotification
+-(void)movieLoadStateDidChange:(id)sender{
+    if(self.player.loadState == MPMovieLoadStatePlayable || self.player.loadState == MPMovieLoadStatePlaythroughOK){
+        if(self.activity){
+            [self.activity stopAnimating];
+            [self.activity removeFromSuperview];
+        }
+        if (self.player.playbackState != MPMoviePlaybackStatePlaying){
+            [self.player play];
+        }
+    }
+}
 @end

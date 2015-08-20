@@ -50,7 +50,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"showDetailImage"]) {
+    if([segue.identifier isEqualToString:SHOW_IMAGE_SEGUE]) {
         if (self.selectedRowIndexPath != nil){
             LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
             DetailImageViewController * destViewConroller = [segue destinationViewController];
@@ -58,7 +58,7 @@
             destViewConroller.fileName = document.fileName;
         }
     }
-    else if([segue.identifier isEqualToString:@"showDetailSound"]) {
+    else if([segue.identifier isEqualToString:SHOW_SOUND_SEGUE]) {
         if (self.selectedRowIndexPath != nil){
             LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
             DetailSoundViewController * destViewConroller = [segue destinationViewController];
@@ -66,7 +66,7 @@
             destViewConroller.fileName = document.fileName;
         }
     }
-    else if([segue.identifier isEqualToString:@"showDetailText"]) {
+    else if([segue.identifier isEqualToString:SHOW_TEXT_SEGUE]) {
         if (self.selectedRowIndexPath != nil){
             LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
             DetailTextViewController * destViewConroller = [segue destinationViewController];
@@ -111,15 +111,19 @@
     LimaDocument *document = self.limaDocuments[indexPath.row];
     switch (document.mimeType) {
         case MimeTypeImage:
-            [self performSegueWithIdentifier:@"showDetailImage" sender:self];
+            [self performSegueWithIdentifier:SHOW_IMAGE_SEGUE sender:self];
             break;
         
         case MimeTypeSound:
-            [self performSegueWithIdentifier:@"showDetailSound" sender:self];
+            [self performSegueWithIdentifier:SHOW_SOUND_SEGUE sender:self];
+            break;
+        
+        case MimeTypeVideo:
+            [self performSegueWithIdentifier:SHOW_SOUND_SEGUE sender:self];
             break;
         
         case MimeTypeText:
-            [self performSegueWithIdentifier:@"showDetailText" sender:self];
+            [self performSegueWithIdentifier:SHOW_TEXT_SEGUE sender:self];
             break;
         
         case MimeTypeDirectory:{
