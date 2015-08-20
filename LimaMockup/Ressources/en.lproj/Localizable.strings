@@ -6,5 +6,15 @@
 //  Copyright (c) 2015 Marie-Odile Del Carlo. All rights reserved.
 //
 
+//Common
+"error" = "Error";
+"warning" = "Warning";
+
+//HttpHelper
+"httpErrorMessage" = "Error while retrieving datas. Please try again.";
+
 //DirectoryListViewController
 "myDocumentsTitle" = "My Documents";
+
+//DetailAudioVisualViewController
+"audioVisualNotSupportedFileMessage" = "This file can't be played: the format is not supported yet.";

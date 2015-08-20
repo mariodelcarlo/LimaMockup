@@ -157,7 +157,6 @@
         NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,thePath];
         NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         url = [NSURL URLWithString:escapedRequest];
-        NSLog(@"%@",escapedRequest);
     }
     
     [HttpHelper fetchJSONForURL:url completion:^(id data, NSError *error) {
@@ -192,7 +191,6 @@
     }
     
     NSString *escapedString = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@",escapedString);
     NSURL * url = [NSURL URLWithString:escapedString];
 
     [HttpHelper fetchJSONForURL:url completion:^(id data, NSError *error) {

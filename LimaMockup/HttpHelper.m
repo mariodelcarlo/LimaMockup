@@ -83,7 +83,15 @@
 
 //Handles Error in Http process
 + (void) handleError:(NSError*)theError{
-    NSLog(@"WB error:%@",theError);
+    NSLog(@"Error in HttpHelper=%@",theError);
+    
+    //Show an alert
+    UIAlertView *theAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"error", @"error")
+                                                       message:NSLocalizedString(@"httpErrorMessage", @"httpErrorMessage")
+                                                      delegate:nil
+                                             cancelButtonTitle:@"OK"
+                                             otherButtonTitles:nil];
+    [theAlert show];
 }
 
 @end

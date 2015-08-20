@@ -29,6 +29,7 @@
                                              selector:@selector(movieLoadStateDidChange:)
                                                  name:MPMoviePlayerLoadStateDidChangeNotification
                                                object:self.player];
+    
     [self.activity startAnimating];
 }
 
@@ -44,30 +45,63 @@
 - (void)loadMedia{
     NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,self.filePath];
     NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:escapedRequest];
     
+    //Checks the extension in order to see if MPMoviePlayerController can play the media
+    if ([self isMediaFileSupportedForPath:escapedRequest]){
+        NSURL *url = [NSURL URLWithString:escapedRequest];
+        
+        //Force even if silent swith is on
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+        
+        self.player=[[MPMoviePlayerController alloc]init];
+        [self.player setMovieSourceType:MPMovieSourceTypeStreaming];
+        [self.player setContentURL:url];
+        [self.player prepareToPlay];
+        [[self.player view] setFrame:self.view.bounds];
+        [self.player view].backgroundColor = [UIColor whiteColor];
+        self.player.scalingMode = MPMovieScalingModeNone;
+        self.player.controlStyle = MPMovieControlStyleDefault;
+        [self.player setFullscreen:YES animated:NO];
+        self.player.backgroundView.backgroundColor = [UIColor whiteColor];
+        self.player.repeatMode = MPMovieRepeatModeNone;
+        self.player.shouldAutoplay = NO;
+        [self.view addSubview: [self.player view]];
+        
+        //Add an activity indicator while the media is loading
+        self.activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.activity.center = self.view.center;
+        [self.view addSubview:self.activity];
+    }
+    else{
+        //Not supported, TODO add some process to read unsuppported files
+        UIAlertView *theAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"warning", @"warning")
+                                                           message:NSLocalizedString(@"audioVisualNotSupportedFileMessage", @"audioVisualNotSupportedFileMessage")
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+        [theAlert show];
+    }
+}
 
-    //Force even if silent swith is on
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+- (NSArray *)playerSupportedFileExtension{
+    static NSArray *names;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        names = @[@".mov", @".mp4", @".mpv", @".3gp", @".mp3"];
+    });
     
-    self.player=[[MPMoviePlayerController alloc]init];
-    [self.player setMovieSourceType:MPMovieSourceTypeStreaming];
-    [self.player setContentURL:url];
-    [self.player prepareToPlay];
-    [[self.player view] setFrame:self.view.bounds];
-    [self.player view].backgroundColor = [UIColor whiteColor];
-    self.player.scalingMode = MPMovieScalingModeNone;
-    self.player.controlStyle = MPMovieControlStyleDefault;
-    [self.player setFullscreen:YES animated:NO];
-    self.player.backgroundView.backgroundColor = [UIColor whiteColor];
-    self.player.repeatMode = MPMovieRepeatModeNone;
-    self.player.shouldAutoplay = NO;
-    [self.view addSubview: [self.player view]];
-    
-    //Add an activity indicator while the media is loading
-    self.activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.activity.center = self.view.center;
-    [self.view addSubview:self.activity];
+    return names;
+}
+
+- (BOOL)isMediaFileSupportedForPath:(NSString *)thePath{
+    NSRange range = [thePath rangeOfString:@"." options:NSBackwardsSearch range:NSMakeRange(0, thePath.length)];
+    if(range.location != NSNotFound){
+        NSString * extension = [[thePath substringFromIndex:range.location] lowercaseString];
+        if ([[self playerSupportedFileExtension] containsObject:extension]){
+            return true;
+        }
+    }
+    return false;
 }
 
 #pragma mark MPMoviePlayerLoadStateDidChangeNotification

@@ -27,7 +27,6 @@
      __weak DetailImageViewController *weakSelf = self;
     NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,self.filePath];
     NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@",escapedRequest);
     NSURL * url = [NSURL URLWithString:escapedRequest];
     [HttpHelper fetchDataForURL:url completion:^(id theData, NSError *error) {
         if(!error){
