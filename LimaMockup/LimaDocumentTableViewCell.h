@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+//A LimaDocument cell
 @interface LimaDocumentTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *fileNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;

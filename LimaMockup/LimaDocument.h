@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+//A Document
 @interface LimaDocument : NSObject
 
+//Enum for the mime type of a file
 typedef NS_ENUM(NSUInteger, MimeType) {
     MimeTypeDirectory = 0,
     MimeTypeVideo = 1,
@@ -20,9 +22,15 @@ typedef NS_ENUM(NSUInteger, MimeType) {
     MimeTypeUnknown = NSUIntegerMax
 };
 
+//The file name
 @property(nonatomic, copy) NSString * fileName;
+
+//The file path
 @property(nonatomic, copy) NSString * filePath;
+
+//The mime type
 @property (nonatomic) MimeType mimeType;
+
 
 - (id)initWithFileName:(NSString*)theFileName;
 + (MimeType)mimeTypeForMimeString:(NSString*)theMimeString;

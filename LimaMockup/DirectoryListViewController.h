@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+//Controller listing a directory
 @interface DirectoryListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+//the path of the directory to list. If nil, we list the content of the endpoint of the API
 @property(nonatomic,assign)NSString *directoyPath;
 @end

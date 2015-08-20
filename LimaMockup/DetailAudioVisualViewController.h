@@ -10,5 +10,6 @@
 #import "DetailViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
+//Controller for displaying a video or a sound
 @interface DetailAudioVisualViewController : DetailViewController
 @end

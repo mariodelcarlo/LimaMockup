@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+//Superclass for Detail View controllers
+//Share a fileName and a filePath (and others properties like size that are not used)
 @interface DetailViewController : UIViewController
 @property (nonatomic, assign) NSString * filePath;
 @property (nonatomic, assign) NSString * fileName;

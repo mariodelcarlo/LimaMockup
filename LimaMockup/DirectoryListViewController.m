@@ -26,7 +26,6 @@
 @implementation DirectoryListViewController
 
 #pragma mark view life cycle methods
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(!self.directoyPath|| [self.directoyPath isEqualToString:@""]){

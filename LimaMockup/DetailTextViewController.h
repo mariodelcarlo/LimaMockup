@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 
+//Controller for displaying a text file
 @interface DetailTextViewController : DetailViewController
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+//Class managing LIMA API http calls
 @interface HttpHelper : NSObject
 + (void)fetchJSONForURL:(NSURL *)url completion:(void (^)(id data, NSError *error)) completionHandler;
 + (void) handleError:(NSError*)theError;

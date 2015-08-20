@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DetailViewController.h"
 
+//Controller for displaying an image
 @interface DetailImageViewController : DetailViewController
 @property (weak, nonatomic) IBOutlet UIImageView * imageView;
 @end

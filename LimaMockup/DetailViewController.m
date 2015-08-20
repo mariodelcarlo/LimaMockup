@@ -8,7 +8,6 @@
 
 #import "DetailViewController.h"
 
-//Common "mother" class for all Detail classes
 
 @implementation DetailViewController
 

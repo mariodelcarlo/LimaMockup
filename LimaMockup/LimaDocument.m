@@ -10,6 +10,7 @@
 
 @implementation LimaDocument
 
+//Init method with a file name
 - (id)initWithFileName:(NSString*)theFileName{
     self = [super init];
     if (self) {
@@ -18,6 +19,8 @@
     return self;
 }
 
+
+//Get the icon image for a LimaDocument
 - (UIImage*)iconImage{
     switch (self.mimeType) {
         case MimeTypeText:
@@ -47,7 +50,7 @@
 }
 
 
-
+//Get the mimeType for a LimaDocument
 + (MimeType)mimeTypeForMimeString:(NSString*)theMimeString{
     if([theMimeString hasPrefix:@"inode/directory"]){
         return MimeTypeDirectory;

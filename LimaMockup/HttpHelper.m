@@ -10,6 +10,7 @@
 
 @implementation HttpHelper
 
+//Get the URL session
 + (NSURLSession *)dataSession {
     static NSURLSession *session = nil;
     static dispatch_once_t onceToken;
@@ -19,6 +20,7 @@
     return session;
 }
 
+//Send a http request that will return JSON datas and perform a completion block if provided
 + (void)fetchJSONForURL:(NSURL *)url completion:(void (^)(id data, NSError *error)) completionHandler {
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -53,6 +55,7 @@
     [dataTask resume];
 }
 
+//Send a http request that will return NSData and perform a completion block if provided
 + (void)fetchDataForURL:(NSURL *)url completion:(void (^)(id theData, NSError *error)) completionHandler {
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -78,6 +81,7 @@
     [dataTask resume];
 }
 
+//Handles Error in Http process
 + (void) handleError:(NSError*)theError{
     NSLog(@"WB error:%@",theError);
 }
