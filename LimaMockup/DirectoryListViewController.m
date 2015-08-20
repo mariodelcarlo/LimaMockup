@@ -179,7 +179,7 @@
     }];
 }
 
-
+//Send a request for getting infos about theFileName file
 - (void)getFileInfoForFileName:(NSString*)theFileName{
     __weak DirectoryListViewController *weakSelf = self;
     NSString *request = nil;
