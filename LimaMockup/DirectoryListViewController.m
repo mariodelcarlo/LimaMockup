@@ -30,7 +30,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(!self.directoyPath|| [self.directoyPath isEqualToString:@""]){
-         self.title = @"Your documents";
+        self.title = NSLocalizedString(@"myDocumentsTitle", @"myDocumentsTitle");
     }
     else{
          self.title = self.directoyPath;

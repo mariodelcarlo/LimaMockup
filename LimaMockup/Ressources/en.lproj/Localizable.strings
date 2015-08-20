@@ -1,0 +1,10 @@
+//
+//  Localizable.strings
+//  LimaMockup
+//
+//  Created by Marie-Odile Del Carlo on 20/08/2015.
+//  Copyright (c) 2015 Marie-Odile Del Carlo. All rights reserved.
+//
+
+//DirectoryListViewController
+"myDocumentsTitle" = "My Documents";
