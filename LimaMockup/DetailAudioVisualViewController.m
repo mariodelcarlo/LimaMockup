@@ -1,26 +1,26 @@
 //
-//  DetailSoundViewController.m
+//  DetailAudioVisualViewController.m
 //  LimaMockup
 //
 //  Created by Marie-Odile Del Carlo on 14/08/2015.
 //  Copyright (c) 2015 Marie-Odile Del Carlo. All rights reserved.
 //
 
-#import "DetailSoundViewController.h"
+#import "DetailAudioVisualViewController.h"
 #import "Constants.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface DetailSoundViewController()
+@interface DetailAudioVisualViewController()
 @property (nonatomic, strong) MPMoviePlayerController * player;
 @property (nonatomic, strong) UIActivityIndicatorView * activity;
 @end
 
-@implementation DetailSoundViewController
+@implementation DetailAudioVisualViewController
 
 #pragma mark view life cycle
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self loadSound];
+    [self loadMedia];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -40,8 +40,8 @@
 }
 
 #pragma mark private methods
-//Init the url for the sound and the player
-- (void)loadSound{
+//Init the url for the sound or video and the player
+- (void)loadMedia{
     NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,self.filePath];
     NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:escapedRequest];

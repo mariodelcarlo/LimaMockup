@@ -1,5 +1,5 @@
 //
-//  DetailSoundViewController.h
+//  DetailAudioVisualViewController.h
 //  LimaMockup
 //
 //  Created by Marie-Odile Del Carlo on 14/08/2015.
@@ -10,5 +10,5 @@
 #import "DetailViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface DetailSoundViewController : DetailViewController
+@interface DetailAudioVisualViewController : DetailViewController
 @end

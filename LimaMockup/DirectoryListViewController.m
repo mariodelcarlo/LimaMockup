@@ -1,5 +1,5 @@
 //
-//  HomeViewController.m
+//  DirectoryListViewController.m
 //  LimaMockup
 //
 //  Created by Marie-Odile Del Carlo on 13/08/2015.
@@ -10,7 +10,7 @@
 #import "LimaDocumentTableViewCell.h"
 #import "LimaDocument.h"
 #import "DetailImageViewController.h"
-#import "DetailSoundViewController.h"
+#import "DetailAudioVisualViewController.h"
 #import "DetailTextViewController.h"
 #import "HttpHelper.h"
 #import "Constants.h"
@@ -58,10 +58,10 @@
             destViewConroller.fileName = document.fileName;
         }
     }
-    else if([segue.identifier isEqualToString:SHOW_SOUND_SEGUE]) {
+    else if([segue.identifier isEqualToString:SHOW_AUDIOVISUAL_SEGUE]) {
         if (self.selectedRowIndexPath != nil){
             LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
-            DetailSoundViewController * destViewConroller = [segue destinationViewController];
+            DetailAudioVisualViewController * destViewConroller = [segue destinationViewController];
             destViewConroller.filePath = document.filePath;
             destViewConroller.fileName = document.fileName;
         }
@@ -115,11 +115,11 @@
             break;
         
         case MimeTypeSound:
-            [self performSegueWithIdentifier:SHOW_SOUND_SEGUE sender:self];
+            [self performSegueWithIdentifier:SHOW_AUDIOVISUAL_SEGUE sender:self];
             break;
         
         case MimeTypeVideo:
-            [self performSegueWithIdentifier:SHOW_SOUND_SEGUE sender:self];
+            [self performSegueWithIdentifier:SHOW_AUDIOVISUAL_SEGUE sender:self];
             break;
         
         case MimeTypeText:

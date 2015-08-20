@@ -14,5 +14,5 @@ NSString * const LIMA_API_URL = @"http://ioschallenge.api.meetlima.com";
 
 //Segue Identifiers
 NSString * const SHOW_IMAGE_SEGUE  = @"showDetailImage";
-NSString * const SHOW_SOUND_SEGUE  = @"showDetailSound";
+NSString * const SHOW_AUDIOVISUAL_SEGUE  = @"showDetailAudioVisual";
 NSString * const SHOW_TEXT_SEGUE   = @"showDetailText";

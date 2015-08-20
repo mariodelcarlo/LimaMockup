@@ -1,5 +1,5 @@
 //
-//  HomeViewController.h
+//  DirectoryListViewController.h
 //  LimaMockup
 //
 //  Created by Marie-Odile Del Carlo on 13/08/2015.

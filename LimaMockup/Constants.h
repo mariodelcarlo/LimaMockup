@@ -11,5 +11,5 @@ extern NSString* const LIMA_API_URL;
 
 //Segue Identifiers
 extern NSString * const  SHOW_IMAGE_SEGUE;
-extern NSString * const SHOW_SOUND_SEGUE;
+extern NSString * const SHOW_AUDIOVISUAL_SEGUE;
 extern NSString * const SHOW_TEXT_SEGUE;
