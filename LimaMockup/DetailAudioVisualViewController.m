@@ -83,6 +83,7 @@
     }
 }
 
+//Returns a string array of the files supported by MPMoviePlayerController
 - (NSArray *)playerSupportedFileExtension{
     static NSArray *names;
     static dispatch_once_t onceToken;
@@ -93,6 +94,7 @@
     return names;
 }
 
+//Indicates if MPMoviePlayerController supports the file which path is given in parameter
 - (BOOL)isMediaFileSupportedForPath:(NSString *)thePath{
     NSRange range = [thePath rangeOfString:@"." options:NSBackwardsSearch range:NSMakeRange(0, thePath.length)];
     if(range.location != NSNotFound){
