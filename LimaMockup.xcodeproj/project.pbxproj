@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF407B9D1B81DCA6006214A0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF407B9C1B81DCA6006214A0 /* DetailViewController.m */; };
 		CF407BA01B81DE29006214A0 /* DetailTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF407B9F1B81DE29006214A0 /* DetailTextViewController.m */; };
-		CF44A9A61B7D322D00963529 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A51B7D322D00963529 /* HomeViewController.m */; };
+		CF44A9A61B7D322D00963529 /* DirectoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A51B7D322D00963529 /* DirectoryListViewController.m */; };
 		CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A81B7D3E4100963529 /* LimaDocumentTableViewCell.m */; };
 		CF771FDF1B85D1D60008B25D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4319531B80E6F20005792A /* AVFoundation.framework */; };
 		CF88A2541B7E119900A90A62 /* MimeDirectory.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2511B7E119900A90A62 /* MimeDirectory.png */; };
@@ -46,8 +46,8 @@
 		CF407B9E1B81DE29006214A0 /* DetailTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTextViewController.h; sourceTree = "<group>"; };
 		CF407B9F1B81DE29006214A0 /* DetailTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTextViewController.m; sourceTree = "<group>"; };
 		CF4319531B80E6F20005792A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CF44A9A41B7D322D00963529 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		CF44A9A51B7D322D00963529 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		CF44A9A41B7D322D00963529 /* DirectoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryListViewController.h; sourceTree = "<group>"; };
+		CF44A9A51B7D322D00963529 /* DirectoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryListViewController.m; sourceTree = "<group>"; };
 		CF44A9A71B7D3E4100963529 /* LimaDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LimaDocumentTableViewCell.h; sourceTree = "<group>"; };
 		CF44A9A81B7D3E4100963529 /* LimaDocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LimaDocumentTableViewCell.m; sourceTree = "<group>"; };
 		CF88A2511B7E119900A90A62 /* MimeDirectory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeDirectory.png; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 				CF407B9F1B81DE29006214A0 /* DetailTextViewController.m */,
 				CF407B9B1B81DCA6006214A0 /* DetailViewController.h */,
 				CF407B9C1B81DCA6006214A0 /* DetailViewController.m */,
-				CF44A9A41B7D322D00963529 /* HomeViewController.h */,
-				CF44A9A51B7D322D00963529 /* HomeViewController.m */,
+				CF44A9A41B7D322D00963529 /* DirectoryListViewController.h */,
+				CF44A9A51B7D322D00963529 /* DirectoryListViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -320,7 +320,7 @@
 				CF88A2661B7E3AEF00A90A62 /* DetailSoundViewController.m in Sources */,
 				CFE6FEED1B7D2F5700991A8C /* main.m in Sources */,
 				CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */,
-				CF44A9A61B7D322D00963529 /* HomeViewController.m in Sources */,
+				CF44A9A61B7D322D00963529 /* DirectoryListViewController.m in Sources */,
 				CF407B9D1B81DCA6006214A0 /* DetailViewController.m in Sources */,
 				CFE6FF121B7D2FC000991A8C /* LimaDocument.m in Sources */,
 				CF88A2601B7E2D9200A90A62 /* HttpHelper.m in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Marie-Odile Del Carlo. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "DirectoryListViewController.h"
 #import "LimaDocumentTableViewCell.h"
 #import "LimaDocument.h"
 #import "DetailImageViewController.h"
@@ -16,14 +16,14 @@
 #import "Constants.h"
 
 
-@interface HomeViewController()
+@interface DirectoryListViewController()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSArray *limaDocuments;
 @property (nonatomic, strong) NSIndexPath * selectedRowIndexPath;
 @end
 
-@implementation HomeViewController
+@implementation DirectoryListViewController
 
 #pragma mark view life cycle methods
 
@@ -128,7 +128,7 @@
         
         case MimeTypeDirectory:{
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-            HomeViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"Home"];
+            DirectoryListViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"Home"];
             dest.directoyPath = document.filePath;
             [self.navigationController pushViewController:dest animated:YES];
         }
@@ -149,7 +149,7 @@
 }
 
 - (void)loadDocumentsForDirectory:(NSString*)thePath{
-    __weak HomeViewController *weakSelf = self;
+    __weak DirectoryListViewController *weakSelf = self;
     NSURL * url = nil;
     if(!thePath || [thePath isEqualToString:@""]){
         url = [NSURL URLWithString:LIMA_API_URL];
@@ -183,7 +183,7 @@
 
 
 - (void)getFileInfoForFileName:(NSString*)theFileName{
-    __weak HomeViewController *weakSelf = self;
+    __weak DirectoryListViewController *weakSelf = self;
     NSString *request = nil;
     if(!self.directoyPath || [self.directoyPath isEqualToString:@""]){
         request = [NSString stringWithFormat:@"%@/%@?stat",LIMA_API_URL,theFileName];
