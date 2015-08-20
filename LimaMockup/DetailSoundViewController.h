@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "DetailViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface DetailSoundViewController : DetailViewController
-@property (nonatomic, strong) AVAudioPlayer * player;
+@property (nonatomic, strong) MPMoviePlayerController * player;
 @end

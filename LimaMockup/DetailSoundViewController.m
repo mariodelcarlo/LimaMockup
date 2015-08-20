@@ -13,36 +13,39 @@
 @implementation DetailSoundViewController
 
 #pragma mark view life cycle
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self loadSound];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.player play];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.player stop];
+    [super viewWillDisappear:animated];
+}
+
 #pragma mark private methods
 - (void)loadSound{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,self.filePath];
-        NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURL *url = [NSURL URLWithString:escapedRequest];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        
-        NSError *error =nil;
-        self.player = [[AVAudioPlayer alloc] initWithData:data error:&error];
-        
-        if(!error){
-            //Force even if silent swith is on
-            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-            [self.player prepareToPlay];
-            [self.player play];
-        }
-        else{
-            NSLog(@"Error=%@",error);
-        }
-    });
+    NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,self.filePath];
+    NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:escapedRequest];
+    
+    self.player=[[MPMoviePlayerController alloc]init];
+    [self.player setMovieSourceType:MPMovieSourceTypeStreaming];
+    [self.player setContentURL:url];
+    [self.player prepareToPlay];
+    [[self.player view] setFrame:self.view.bounds];
+    [self.player view].backgroundColor = [UIColor whiteColor];
+    self.player.scalingMode = MPMovieScalingModeNone;
+    self.player.controlStyle = MPMovieControlStyleDefault;
+    self.player.backgroundView.backgroundColor = [UIColor whiteColor];
+    self.player.repeatMode = MPMovieRepeatModeNone;
+    [self.view addSubview: [self.player view]];
 }
 
 @end
