@@ -10,5 +10,4 @@
 
 @interface DetailTextViewController : DetailViewController
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-
 @end

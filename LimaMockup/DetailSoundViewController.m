@@ -8,7 +8,11 @@
 
 #import "DetailSoundViewController.h"
 #import "Constants.h"
+#import <AVFoundation/AVFoundation.h>
 
+@interface DetailSoundViewController()
+@property (nonatomic, strong) MPMoviePlayerController * player;
+@end
 
 @implementation DetailSoundViewController
 
@@ -30,10 +34,14 @@
 }
 
 #pragma mark private methods
+//Init the url for the sound and the player
 - (void)loadSound{
     NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,self.filePath];
     NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:escapedRequest];
+    
+    //Force even if silent swith is on
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     
     self.player=[[MPMoviePlayerController alloc]init];
     [self.player setMovieSourceType:MPMovieSourceTypeStreaming];

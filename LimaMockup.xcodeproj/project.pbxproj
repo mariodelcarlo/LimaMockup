@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		CF407B9D1B81DCA6006214A0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF407B9C1B81DCA6006214A0 /* DetailViewController.m */; };
 		CF407BA01B81DE29006214A0 /* DetailTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF407B9F1B81DE29006214A0 /* DetailTextViewController.m */; };
-		CF4319541B80E6F20005792A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4319531B80E6F20005792A /* AVFoundation.framework */; };
 		CF44A9A61B7D322D00963529 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A51B7D322D00963529 /* HomeViewController.m */; };
 		CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A81B7D3E4100963529 /* LimaDocumentTableViewCell.m */; };
+		CF771FDF1B85D1D60008B25D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4319531B80E6F20005792A /* AVFoundation.framework */; };
 		CF88A2541B7E119900A90A62 /* MimeDirectory.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2511B7E119900A90A62 /* MimeDirectory.png */; };
 		CF88A2551B7E119900A90A62 /* MimeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2521B7E119900A90A62 /* MimeImage.png */; };
 		CF88A2561B7E119900A90A62 /* MimeVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2531B7E119900A90A62 /* MimeVideo.png */; };
@@ -86,8 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF771FDF1B85D1D60008B25D /* AVFoundation.framework in Frameworks */,
 				CF8FC51A1B85C07D00103C65 /* MediaPlayer.framework in Frameworks */,
-				CF4319541B80E6F20005792A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
