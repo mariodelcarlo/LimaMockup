@@ -14,12 +14,12 @@
 
 //Enum for the mime type of a file
 typedef NS_ENUM(NSUInteger, MimeType) {
-    MimeTypeDirectory = 0,
-    MimeTypeVideo = 1,
-    MimeTypeImage = 2,
-    MimeTypeText = 3,
-    MimeTypeSound = 4,
-    MimeTypeUnknown = NSUIntegerMax
+    MimeTypeUnknown = 0,
+    MimeTypeDirectory = 1,
+    MimeTypeVideo = 2,
+    MimeTypeImage = 3,
+    MimeTypeText = 4,
+    MimeTypeSound = 5
 };
 
 //The file name

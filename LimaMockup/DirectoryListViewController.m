@@ -28,6 +28,7 @@
 #pragma mark view life cycle methods
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    //Set title
     if(!self.directoyPath|| [self.directoyPath isEqualToString:@""]){
         self.title = NSLocalizedString(@"myDocumentsTitle", @"myDocumentsTitle");
     }
@@ -41,6 +42,7 @@
     [super viewDidLoad];
     [self loadDocumentsForDirectory:self.directoyPath];
     self.selectedRowIndexPath = nil;
+    //Add refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor lightGrayColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
@@ -76,7 +78,6 @@
 }
 
 #pragma mark UITableViewDataSource
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -104,7 +105,6 @@
 }
 
 #pragma mark UITableViewDelegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectedRowIndexPath = indexPath;
     LimaDocument *document = self.limaDocuments[indexPath.row];
@@ -137,11 +137,11 @@
             break;
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    self.selectedRowIndexPath = nil;
 }
 
 #pragma mark private methods
 - (void)refreshDocuments {
-    //TODO: refresh your data
     [self loadDocumentsForDirectory:self.directoyPath];
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];

@@ -42,6 +42,10 @@
         case MimeTypeSound:
             return [UIImage imageNamed:@"MimeSound.png"];
             break;
+        
+        case MimeTypeUnknown:
+            return nil;
+            break;
             
         default:
             return nil;
