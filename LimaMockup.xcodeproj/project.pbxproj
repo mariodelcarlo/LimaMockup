@@ -14,6 +14,7 @@
 		CF771FDF1B85D1D60008B25D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4319531B80E6F20005792A /* AVFoundation.framework */; };
 		CF771FE41B85E4510008B25D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF771FE21B85E4510008B25D /* Localizable.strings */; };
 		CF771FE71B85E7B10008B25D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = CF771FE61B85E7B10008B25D /* Constants.m */; };
+		CF771FE91B862E3E0008B25D /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF771FE81B862E3E0008B25D /* Readme.txt */; };
 		CF88A2541B7E119900A90A62 /* MimeDirectory.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2511B7E119900A90A62 /* MimeDirectory.png */; };
 		CF88A2551B7E119900A90A62 /* MimeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2521B7E119900A90A62 /* MimeImage.png */; };
 		CF88A2561B7E119900A90A62 /* MimeVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2531B7E119900A90A62 /* MimeVideo.png */; };
@@ -55,6 +56,7 @@
 		CF771FE31B85E4510008B25D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF771FE51B85E45B0008B25D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF771FE61B85E7B10008B25D /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		CF771FE81B862E3E0008B25D /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		CF88A2511B7E119900A90A62 /* MimeDirectory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeDirectory.png; sourceTree = "<group>"; };
 		CF88A2521B7E119900A90A62 /* MimeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeImage.png; sourceTree = "<group>"; };
 		CF88A2531B7E119900A90A62 /* MimeVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeVideo.png; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		CFE6FEDE1B7D2F5700991A8C = {
 			isa = PBXGroup;
 			children = (
+				CF771FE81B862E3E0008B25D /* Readme.txt */,
 				CF8FC5191B85C07D00103C65 /* MediaPlayer.framework */,
 				CF4319531B80E6F20005792A /* AVFoundation.framework */,
 				CFE6FEE91B7D2F5700991A8C /* LimaMockup */,
@@ -307,6 +310,7 @@
 				CF88A2541B7E119900A90A62 /* MimeDirectory.png in Resources */,
 				CFE6FEFB1B7D2F5800991A8C /* LaunchScreen.xib in Resources */,
 				CF88A2581B7E130E00A90A62 /* MimeText.png in Resources */,
+				CF771FE91B862E3E0008B25D /* Readme.txt in Resources */,
 				CFE6FEF81B7D2F5800991A8C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
