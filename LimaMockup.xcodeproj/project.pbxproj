@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF407B9D1B81DCA6006214A0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF407B9C1B81DCA6006214A0 /* DetailViewController.m */; };
+		CF407BA01B81DE29006214A0 /* DetailTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF407B9F1B81DE29006214A0 /* DetailTextViewController.m */; };
+		CF4319541B80E6F20005792A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4319531B80E6F20005792A /* AVFoundation.framework */; };
 		CF44A9A61B7D322D00963529 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A51B7D322D00963529 /* HomeViewController.m */; };
 		CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A81B7D3E4100963529 /* LimaDocumentTableViewCell.m */; };
 		CF88A2541B7E119900A90A62 /* MimeDirectory.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2511B7E119900A90A62 /* MimeDirectory.png */; };
@@ -38,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF407B9B1B81DCA6006214A0 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		CF407B9C1B81DCA6006214A0 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		CF407B9E1B81DE29006214A0 /* DetailTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTextViewController.h; sourceTree = "<group>"; };
+		CF407B9F1B81DE29006214A0 /* DetailTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTextViewController.m; sourceTree = "<group>"; };
+		CF4319531B80E6F20005792A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CF44A9A41B7D322D00963529 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		CF44A9A51B7D322D00963529 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		CF44A9A71B7D3E4100963529 /* LimaDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LimaDocumentTableViewCell.h; sourceTree = "<group>"; };
@@ -76,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF4319541B80E6F20005792A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,14 +121,18 @@
 		CF88A2591B7E222600A90A62 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CF44A9A41B7D322D00963529 /* HomeViewController.h */,
-				CF44A9A51B7D322D00963529 /* HomeViewController.m */,
+				CF88A2691B7E3C9F00A90A62 /* DetailDirectoryViewController.h */,
+				CF88A26A1B7E3C9F00A90A62 /* DetailDirectoryViewController.m */,
 				CF88A25A1B7E229B00A90A62 /* DetailImageViewController.h */,
 				CF88A25B1B7E229B00A90A62 /* DetailImageViewController.m */,
 				CF88A2641B7E3AEF00A90A62 /* DetailSoundViewController.h */,
 				CF88A2651B7E3AEF00A90A62 /* DetailSoundViewController.m */,
-				CF88A2691B7E3C9F00A90A62 /* DetailDirectoryViewController.h */,
-				CF88A26A1B7E3C9F00A90A62 /* DetailDirectoryViewController.m */,
+				CF407B9E1B81DE29006214A0 /* DetailTextViewController.h */,
+				CF407B9F1B81DE29006214A0 /* DetailTextViewController.m */,
+				CF407B9B1B81DCA6006214A0 /* DetailViewController.h */,
+				CF407B9C1B81DCA6006214A0 /* DetailViewController.m */,
+				CF44A9A41B7D322D00963529 /* HomeViewController.h */,
+				CF44A9A51B7D322D00963529 /* HomeViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -137,6 +150,7 @@
 		CFE6FEDE1B7D2F5700991A8C = {
 			isa = PBXGroup;
 			children = (
+				CF4319531B80E6F20005792A /* AVFoundation.framework */,
 				CFE6FEE91B7D2F5700991A8C /* LimaMockup */,
 				CFE6FF031B7D2F5800991A8C /* LimaMockupTests */,
 				CFE6FEE81B7D2F5700991A8C /* Products */,
@@ -308,9 +322,11 @@
 				CFE6FEED1B7D2F5700991A8C /* main.m in Sources */,
 				CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */,
 				CF44A9A61B7D322D00963529 /* HomeViewController.m in Sources */,
+				CF407B9D1B81DCA6006214A0 /* DetailViewController.m in Sources */,
 				CFE6FF121B7D2FC000991A8C /* LimaDocument.m in Sources */,
 				CF88A2601B7E2D9200A90A62 /* HttpHelper.m in Sources */,
 				CF88A25C1B7E229B00A90A62 /* DetailImageViewController.m in Sources */,
+				CF407BA01B81DE29006214A0 /* DetailTextViewController.m in Sources */,
 				CF88A26B1B7E3C9F00A90A62 /* DetailDirectoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

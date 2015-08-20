@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailViewController.h"
 
-@interface DetailImageViewController : UIViewController
+@interface DetailImageViewController : DetailViewController
 @property (weak, nonatomic) IBOutlet UIImageView * imageView;
-@property (nonatomic, assign) NSString * imagePath;
-@property (nonatomic, assign) NSString * imageName;
 @end

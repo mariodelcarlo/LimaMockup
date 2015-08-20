@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import "DetailViewController.h"
 
-@interface DetailSoundViewController : UIViewController
-
+@interface DetailSoundViewController : DetailViewController
+@property (nonatomic, strong) AVAudioPlayer * player;
 @end

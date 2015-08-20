@@ -7,3 +7,8 @@
 //
 
 #define LIMA_API_URL @"http://ioschallenge.api.meetlima.com"
+
+//Segue Identifiers
+#define SHOW_IMAGE_SEGUE @"showDetailImage"
+#define SHOW_SOUND_SEGUE @"showDetailSound"
+#define SHOW_TEXT_SEGUE @"showDetailText"

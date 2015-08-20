@@ -10,6 +10,8 @@
 #import "LimaDocumentTableViewCell.h"
 #import "LimaDocument.h"
 #import "DetailImageViewController.h"
+#import "DetailSoundViewController.h"
+#import "DetailTextViewController.h"
 #import "HttpHelper.h"
 #import "Constants.h"
 
@@ -27,7 +29,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.title = @"Your documents";
+    if(!self.directoyPath|| [self.directoyPath isEqualToString:@""]){
+         self.title = @"Your documents";
+    }
+    else{
+         self.title = self.directoyPath;
+    }
 }
 
 
@@ -47,8 +54,24 @@
         if (self.selectedRowIndexPath != nil){
             LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
             DetailImageViewController * destViewConroller = [segue destinationViewController];
-            destViewConroller.imagePath = document.filePath;
-            destViewConroller.imageName = document.fileName;
+            destViewConroller.filePath = document.filePath;
+            destViewConroller.fileName = document.fileName;
+        }
+    }
+    else if([segue.identifier isEqualToString:@"showDetailSound"]) {
+        if (self.selectedRowIndexPath != nil){
+            LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
+            DetailSoundViewController * destViewConroller = [segue destinationViewController];
+            destViewConroller.filePath = document.filePath;
+            destViewConroller.fileName = document.fileName;
+        }
+    }
+    else if([segue.identifier isEqualToString:@"showDetailText"]) {
+        if (self.selectedRowIndexPath != nil){
+            LimaDocument *document = self.limaDocuments[self.selectedRowIndexPath.row];
+            DetailTextViewController * destViewConroller = [segue destinationViewController];
+            destViewConroller.filePath = document.filePath;
+            destViewConroller.fileName = document.fileName;
         }
     }
 }
@@ -91,6 +114,14 @@
             [self performSegueWithIdentifier:@"showDetailImage" sender:self];
             break;
         
+        case MimeTypeSound:
+            [self performSegueWithIdentifier:@"showDetailSound" sender:self];
+            break;
+        
+        case MimeTypeText:
+            [self performSegueWithIdentifier:@"showDetailText" sender:self];
+            break;
+        
         case MimeTypeDirectory:{
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
             HomeViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"Home"];
@@ -121,7 +152,9 @@
     }
     else{
         NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,thePath];
-        url = [NSURL URLWithString:request];
+        NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        url = [NSURL URLWithString:escapedRequest];
+        NSLog(@"%@",escapedRequest);
     }
     
     [HttpHelper fetchJSONForURL:url completion:^(id data, NSError *error) {
@@ -154,9 +187,10 @@
     else{
         request = [NSString stringWithFormat:@"%@%@/%@?stat",LIMA_API_URL,self.directoyPath,theFileName];
     }
-    NSLog(@"%@",request);
-    NSURL * url = [NSURL URLWithString:request];
     
+    NSString *escapedString = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"%@",escapedString);
+    NSURL * url = [NSURL URLWithString:escapedString];
 
     [HttpHelper fetchJSONForURL:url completion:^(id data, NSError *error) {
         if(error){

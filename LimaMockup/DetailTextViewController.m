@@ -1,16 +1,16 @@
 //
-//  DetailImageViewController.m
+//  DetailTextViewController.m
 //  LimaMockup
 //
-//  Created by Marie-Odile Del Carlo on 14/08/2015.
+//  Created by Marie-Odile Del Carlo on 17/08/2015.
 //  Copyright (c) 2015 Marie-Odile Del Carlo. All rights reserved.
 //
 
-#import "DetailImageViewController.h"
-#import "HttpHelper.h"
+#import "DetailTextViewController.h"
 #import "Constants.h"
+#import "HttpHelper.h"
 
-@implementation DetailImageViewController
+@implementation DetailTextViewController
 
 #pragma mark view life cycle
 -(void)viewWillAppear:(BOOL)animated{
@@ -19,21 +19,29 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self loadImage];
+    [self loadText];
 }
 
 #pragma mark private methods
-- (void)loadImage{
-     __weak DetailImageViewController *weakSelf = self;
+-(void)loadText{
+    __weak DetailTextViewController *weakSelf = self;
     NSString *request = [NSString stringWithFormat:@"%@%@",LIMA_API_URL,self.filePath];
     NSString *escapedRequest = [request stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@",escapedRequest);
     NSURL * url = [NSURL URLWithString:escapedRequest];
     [HttpHelper fetchDataForURL:url completion:^(id theData, NSError *error) {
         if(!error){
-            UIImage *downloadedImage = [UIImage imageWithData:theData];
+            NSString * downloadedText = [[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding];
+            if(!downloadedText){
+                downloadedText = [[NSString alloc] initWithData:theData encoding:NSUnicodeStringEncoding];
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.imageView.image = downloadedImage;
+                if (downloadedText != nil){
+                    weakSelf.textView.text = downloadedText;
+                }
+                else{
+                    weakSelf.textView.text = @"Could not load the text";
+                }
             });
         }
         else{
