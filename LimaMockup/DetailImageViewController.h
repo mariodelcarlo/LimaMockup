@@ -11,5 +11,7 @@
 
 //Controller for displaying an image
 @interface DetailImageViewController : DetailViewController
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 @property (weak, nonatomic) IBOutlet UIImageView * imageView;
 @end

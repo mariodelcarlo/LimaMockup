@@ -123,23 +123,38 @@
                         <viewControllerLayoutGuide type="bottom" id="0hF-JD-FI6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KFa-YE-NYo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-uY-Qbv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-uY-Qbv" userLabel="ImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67S-J5-S7e">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UMC-58-IO3">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0hF-JD-FI6" firstAttribute="top" secondItem="qB4-uY-Qbv" secondAttribute="bottom" id="3FW-dO-p6L"/>
-                            <constraint firstItem="qB4-uY-Qbv" firstAttribute="top" secondItem="KFa-YE-NYo" secondAttribute="top" id="GXF-9Z-lx5"/>
-                            <constraint firstAttribute="trailing" secondItem="qB4-uY-Qbv" secondAttribute="trailing" id="ZkD-83-q2O"/>
-                            <constraint firstItem="qB4-uY-Qbv" firstAttribute="leading" secondItem="KFa-YE-NYo" secondAttribute="leading" id="vdg-5s-Sgn"/>
+                            <constraint firstItem="67S-J5-S7e" firstAttribute="leading" secondItem="KFa-YE-NYo" secondAttribute="leading" id="4Vl-kV-3M9"/>
+                            <constraint firstAttribute="centerY" secondItem="UMC-58-IO3" secondAttribute="centerY" id="5kT-Bf-Z5A"/>
+                            <constraint firstItem="qB4-uY-Qbv" firstAttribute="leading" secondItem="KFa-YE-NYo" secondAttribute="leading" id="6ky-Vq-g0w"/>
+                            <constraint firstItem="qB4-uY-Qbv" firstAttribute="top" secondItem="KFa-YE-NYo" secondAttribute="top" id="Df7-cV-UQD"/>
+                            <constraint firstItem="0hF-JD-FI6" firstAttribute="top" secondItem="67S-J5-S7e" secondAttribute="bottom" id="QME-VK-D1h"/>
+                            <constraint firstAttribute="centerX" secondItem="UMC-58-IO3" secondAttribute="centerX" id="Y3g-si-my9"/>
+                            <constraint firstAttribute="trailing" secondItem="qB4-uY-Qbv" secondAttribute="trailing" id="jJH-n7-1hi"/>
+                            <constraint firstItem="67S-J5-S7e" firstAttribute="top" secondItem="KFa-YE-NYo" secondAttribute="top" constant="64" id="lOh-D9-C3C"/>
+                            <constraint firstItem="0hF-JD-FI6" firstAttribute="top" secondItem="qB4-uY-Qbv" secondAttribute="bottom" id="rSz-Yf-Ye3"/>
+                            <constraint firstAttribute="trailing" secondItem="67S-J5-S7e" secondAttribute="trailing" id="utt-cs-a9P"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activity" destination="UMC-58-IO3" id="FQX-dc-lSc"/>
                         <outlet property="imageView" destination="qB4-uY-Qbv" id="pcj-xM-HN0"/>
+                        <outlet property="webView" destination="67S-J5-S7e" id="d3F-2a-X19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCc-rL-trq" userLabel="First Responder" sceneMemberID="firstResponder"/>
