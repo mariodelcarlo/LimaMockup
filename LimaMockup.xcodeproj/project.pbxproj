@@ -13,6 +13,7 @@
 		CF44A9A91B7D3E4100963529 /* LimaDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44A9A81B7D3E4100963529 /* LimaDocumentTableViewCell.m */; };
 		CF771FDF1B85D1D60008B25D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4319531B80E6F20005792A /* AVFoundation.framework */; };
 		CF771FE41B85E4510008B25D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF771FE21B85E4510008B25D /* Localizable.strings */; };
+		CF771FE71B85E7B10008B25D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = CF771FE61B85E7B10008B25D /* Constants.m */; };
 		CF88A2541B7E119900A90A62 /* MimeDirectory.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2511B7E119900A90A62 /* MimeDirectory.png */; };
 		CF88A2551B7E119900A90A62 /* MimeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2521B7E119900A90A62 /* MimeImage.png */; };
 		CF88A2561B7E119900A90A62 /* MimeVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF88A2531B7E119900A90A62 /* MimeVideo.png */; };
@@ -53,6 +54,7 @@
 		CF44A9A81B7D3E4100963529 /* LimaDocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LimaDocumentTableViewCell.m; sourceTree = "<group>"; };
 		CF771FE31B85E4510008B25D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF771FE51B85E45B0008B25D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CF771FE61B85E7B10008B25D /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		CF88A2511B7E119900A90A62 /* MimeDirectory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeDirectory.png; sourceTree = "<group>"; };
 		CF88A2521B7E119900A90A62 /* MimeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeImage.png; sourceTree = "<group>"; };
 		CF88A2531B7E119900A90A62 /* MimeVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimeVideo.png; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				CF88A2611B7E346A00A90A62 /* Constants.h */,
+				CF771FE61B85E7B10008B25D /* Constants.m */,
 				CF88A25E1B7E2D9200A90A62 /* HttpHelper.h */,
 				CF88A25F1B7E2D9200A90A62 /* HttpHelper.m */,
 			);
@@ -322,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF771FE71B85E7B10008B25D /* Constants.m in Sources */,
 				CFE6FEF01B7D2F5800991A8C /* AppDelegate.m in Sources */,
 				CF88A2661B7E3AEF00A90A62 /* DetailSoundViewController.m in Sources */,
 				CFE6FEED1B7D2F5700991A8C /* main.m in Sources */,

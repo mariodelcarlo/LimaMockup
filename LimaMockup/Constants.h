@@ -6,9 +6,10 @@
 //  Copyright (c) 2015 Marie-Odile Del Carlo. All rights reserved.
 //
 
-#define LIMA_API_URL @"http://ioschallenge.api.meetlima.com"
+//LIMA API URL
+extern NSString* const LIMA_API_URL;
 
 //Segue Identifiers
-#define SHOW_IMAGE_SEGUE @"showDetailImage"
-#define SHOW_SOUND_SEGUE @"showDetailSound"
-#define SHOW_TEXT_SEGUE @"showDetailText"
+extern NSString * const  SHOW_IMAGE_SEGUE;
+extern NSString * const SHOW_SOUND_SEGUE;
+extern NSString * const SHOW_TEXT_SEGUE;
