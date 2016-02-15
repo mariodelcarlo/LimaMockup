@@ -1,3 +1,34 @@
+This is a project made for Lima Technology as a technical test.
+The subject was:
+
+The iOS challenge is to build an app for iPhone. This app will give the user access to a "file system" that can be accessed using an HTTP REST API. The documentation for the API can be found at https://github.com/loderunner/webfs. The endpoint for this exercise is located at http://ioschallenge.api.meetlima.com/
+
+We encourage you to take 15 minutes to write a readme.txt to explain your code and your technical choices. You can use any library or framework of your choice.
+
+Mandatory features
+The application will include the following features:
+Navigate "file system"
+List directory contents
+Enter directories
+Return to parent directory
+View media files (jpg, mp3, mp4)
+Pull to refresh
+
+Optional features
+The application can also include the following features:
+Read other media type (xls, word, ppt etc...)
+Add directory
+Upload picture (from library)
+Take picture or video with camera
+Record audio with microphone
+Read other media types
+Open files in other application
+Be creative!
+
+Additional features are not mandatory! We'd rather see only a couple additional features well written than a ton of half-baked ideas.
+
+________________________________________
+
 Here are some details about my code:
 - I created a class named HttpHelper that handles all web services calls
 - In general, we use constants that can be used over all the application: I declare them in Constants files
